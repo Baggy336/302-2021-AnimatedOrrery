@@ -5,7 +5,7 @@ using UnityEngine;
 public class GenerateOrbitPath : MonoBehaviour
 {
     [Range(10, 60)] public int num = 10;
-    [Range(3, 300)] public float radius = 5;
+    [Range(3, 600)] public float radius = 5;
     LineRenderer orbit;
 
     private void Start()
