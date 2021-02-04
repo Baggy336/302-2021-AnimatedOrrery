@@ -19,6 +19,16 @@ public class CameraControl : MonoBehaviour
     public float mouseSensY = 1;
     // Declare the camera
     private Camera cam;
+    public Transform planet1;
+    public Transform planet2;
+    public Transform planet3;
+    public Transform planet4;
+    public Transform planet5;
+    public Transform planet6;
+    public Transform planet7;
+    public Transform planet8;
+
+    public Transform subjectPosition;
 
     void Start()
     {
@@ -55,8 +65,43 @@ public class CameraControl : MonoBehaviour
         pitch = AnimMath.Slide(pitch, targetPitch, .05f);
         // Ease into the Yaw
         yaw = AnimMath.Slide(yaw, targetYaw, .05f);
+        //targetYaw = Mathf.Clamp(targetYaw, 60, -60);
 
         // Use yaw and pitch to move the camera with Euler
         transform.rotation = Quaternion.Euler(pitch, yaw, 0);
+
+        // Switch the camera's focus on a new subject.
+        cam.transform.position = subjectPosition.position + new Vector3(0, dollyDis, -dollyDis);
+    }
+
+    public void CameraSwitch(int planetNum)
+    {
+        switch (planetNum)
+        {
+            case 0:
+                subjectPosition = planet1;               
+                break;
+            case 1:
+                subjectPosition = planet2;                
+                break;
+            case 2:
+                subjectPosition = planet3;
+                break;
+            case 3:
+                subjectPosition = planet4;
+                break;
+            case 4:
+                subjectPosition = planet5;
+                break;
+            case 5:
+                subjectPosition = planet6;
+                break;
+            case 6:
+                subjectPosition = planet7;
+                break;
+            case 7:
+                subjectPosition = planet8;
+                break;
+        }
     }
 }
