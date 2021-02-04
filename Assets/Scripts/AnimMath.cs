@@ -35,11 +35,11 @@ public static class AnimMath
         return AnimMath.Lerp(current, target, p);
     }
 
-    public static Vector3 SpotOnCircleXZ( float radius, float currentAngle)
+    public static Vector3 SpotOnCircleXZ( float radius, float currentAngle, float sinWaveSkew, float sinPosSkew, float sinWaveFreq, float sinWaveSet, float cosWaveSkew, float cosPosSkew, float cosWaveFreq, float cosWaveSet)
     {
         Vector3 offset = new Vector3();
-        offset.x = Mathf.Sin(currentAngle) * radius;
-        offset.z = Mathf.Cos(currentAngle) * radius;
+        offset.x = Mathf.Sin(currentAngle * sinWaveFreq + sinWaveSet) * radius * sinWaveSkew + sinPosSkew;
+        offset.z = Mathf.Cos(currentAngle * cosWaveFreq + cosWaveSet) * radius * cosWaveSkew + cosPosSkew;
         return offset;
     }
 }
